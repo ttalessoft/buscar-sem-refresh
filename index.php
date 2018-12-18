@@ -17,7 +17,7 @@
 <body>
     <h1>Busca sem refresh</h1>
 
-    <form action="processa.php" methot="post">
+    <form>
 
         Buscar por: <input type="text" name="campo" id="campo">
 
@@ -26,9 +26,9 @@
             <?php 
 
                 include_once("conecta.php");
-                $sql = $mysqli->prepare("select * from tb_produtos");
+                $sql = $mysqli->prepare("select * from tb_produtos order by descricao");
                 $sql->execute();
-                $sql->bind_result($id, $descricao, $vlr, $data);
+                $sql->bind_result($id, $descricao, $vlr, $data);     
 
                 echo "
                     <table>
@@ -43,12 +43,15 @@
                         <tbody";
 
                     while ($sql->fetch()) {
+
+                       $dt = date('d-m-Y', strtotime($data));
+                        
                         echo "
                         <tr>
                             <td>$id</td>
                             <td>$descricao</td>
                             <td>$vlr</td>
-                            <td>$data</td>
+                            <td>$dt</td>
                         </tr>";
                     }
                     echo "</tbody>

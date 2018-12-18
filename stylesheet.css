@@ -1,0 +1,16 @@
+table{
+    margin-top: 40px;
+}
+table thead td{
+    width: 100px;
+    background-color: #333;
+    color: #fff;
+    height: 40px;
+    text-align: center;
+}
+
+table tbody td{
+    width: 100px;
+    height: 40px;
+    text-align: center;
+}
